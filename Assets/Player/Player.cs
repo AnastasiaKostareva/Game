@@ -60,12 +60,6 @@ public class Player : MonoBehaviour
         return playerPosition;
     }
 
-    private void PickUp()
-    {
-
-    }
-
-
     private void OnEnable() => input.Enable();
     private void OnDisable() => input.Disable();
 }
