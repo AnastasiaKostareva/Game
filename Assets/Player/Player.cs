@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -13,13 +17,22 @@ public class Player : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private bool canPickUp;
 
+    public bool isDashing;
+    public float DashPower = 0;
+    public float DashDuration = 2;
+    [FormerlySerializedAs("curDashTime")] public float curDashPower;
+    private float dashKoef;
+    private float dashCoolDwon;
+
     private float minMovementSpeed = 0.1f;
     private bool isRun = false;
+    
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        dashKoef = DashPower / 20;
         Instance = this;
         input = new Controls();
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -32,7 +45,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidbody.velocity = new Vector2(movementX, movementY);
+        Move();
+        curDashPower -= dashKoef;
+        dashCoolDwon -= Time.deltaTime;
+        if (dashCoolDwon <= 0) isDashing = false;
+
         if (Mathf.Abs(movementX) < minMovementSpeed && Mathf.Abs(movementY) < minMovementSpeed)
             isRun = false;
         else
@@ -42,6 +59,30 @@ public class Player : MonoBehaviour
     public bool IsRunning()
     {
         return isRun;
+    }
+
+    private void Move()
+    {
+        if (Input.GetMouseButtonDown(1) && !isDashing)
+        {
+            dashCoolDwon = DashDuration;
+            curDashPower = DashPower;
+            isDashing = true;
+        }
+
+        rigidbody.velocity = new Vector2(movementX, movementY) + FindDashVector();
+    }
+
+    private Vector2 FindDashVector()
+    {
+        var x = 0f;
+        var y = 0f;
+        if (curDashPower <= 0) curDashPower = 0;
+        if (movementX < 0) x = -curDashPower;
+        if (movementX > 0) x = curDashPower;
+        if (movementY < 0) y = -curDashPower;
+        if (movementY > 0) y = curDashPower;
+        return new Vector2(x, y);
     }
 
     private void ChangeVelocityX(float hor)
