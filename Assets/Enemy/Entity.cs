@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Entity : MonoBehaviour
 {
-    public int Health;
-    public int Damage;
+    public int hp;
+    public int damage;
     public float resist;
     public float delay;
-    public LayerMask isSolid;
 
-    void Update()
+    private void Update()
     {
-        if (Health <= 0)
+        if (hp <= 0)
         {
             Destroy(gameObject);
         }
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         if (resist <= 0)
         {
-            Health -= damage;
+            hp -= damage;
             resist = delay;
         }
     }

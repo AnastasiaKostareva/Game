@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ using UnityEngine.Serialization;
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
+    private BoxCollider2D collider;
+    public LayerMask whatIsSolid;
 
     private Controls input;
     public float speed = 15;
@@ -26,25 +29,28 @@ public class Player : MonoBehaviour
 
     private float minMovementSpeed = 0.1f;
     private bool isRun = false;
+
+    public int hp;
+    public float resistance;
     
-
-
-    // Start is called before the first frame update
     void Awake()
     {
         dashKoef = DashPower / 20;
         Instance = this;
         input = new Controls();
+        collider = gameObject.GetComponent<BoxCollider2D>();
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         input.Player.ChangeVelocityX.performed += context => ChangeVelocityX(context.ReadValue<float>());
         input.Player.ChangeVelocityX.canceled += _ => ChangeVelocityX(0);
         input.Player.ChangeVelocityY.performed += context => ChangeVelocityY(context.ReadValue<float>());
         input.Player.ChangeVelocityY.canceled += _ => ChangeVelocityY(0);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        TakeDamage();
+        resistance -= Time.deltaTime;
+        if (hp <= 0) Destroy(gameObject);
         Move();
         curDashPower -= dashKoef;
         dashCoolDwon -= Time.deltaTime;
@@ -99,6 +105,22 @@ public class Player : MonoBehaviour
     {
         var playerPosition = Camera.main.WorldToScreenPoint(transform.position);
         return playerPosition;
+    }
+
+    private void TakeDamage()
+    {
+        var hit = Physics2D.Raycast(transform.position, transform.forward, 1, whatIsSolid);
+        if (hit.collider is not null)
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                if (resistance <= 0)
+                {
+                    hp -= hit.collider.GetComponent<Entity>().damage;
+                    resistance = 0.6f;
+                }
+            }
+        }
     }
 
     private void OnEnable() => input.Enable();

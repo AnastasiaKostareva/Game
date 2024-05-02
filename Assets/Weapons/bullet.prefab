@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  distance: 3
+  distance: 1
   damage: 3
   whatIsSolid:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
