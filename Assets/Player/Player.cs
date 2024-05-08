@@ -30,9 +30,10 @@ public class Player : MonoBehaviour
     private float minMovementSpeed = 0.1f;
     private bool isRun = false;
 
-    public int hp;
+    public int hp = 10;
+    public readonly int maxHp = 10;
     public float resistance;
-    
+
     void Awake()
     {
         dashKoef = DashPower / 20;
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
         input.Player.ChangeVelocityY.performed += context => ChangeVelocityY(context.ReadValue<float>());
         input.Player.ChangeVelocityY.canceled += _ => ChangeVelocityY(0);
     }
-    
+
     void Update()
     {
         TakeDamage();
