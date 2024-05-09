@@ -8,6 +8,7 @@ public class UseWeapon : MonoBehaviour
     public GameObject bullet;
     public float delay;
     private float timeBetweenShots;
+    public int countBullet = 10;
 
     private void RotateGun()
     {
@@ -15,16 +16,17 @@ public class UseWeapon : MonoBehaviour
         var coefficent = Mathf.Atan2(mouseCoordinates.y, mouseCoordinates.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, coefficent);
     }
-    
+
     void Update()
     {
         RotateGun();
         if (timeBetweenShots <= 0)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && countBullet > 0)
             {
                 Instantiate(bullet, shootPos.position, transform.rotation);
                 timeBetweenShots = delay;
+                countBullet -= 1;
             }
         }
         else timeBetweenShots -= Time.deltaTime;
