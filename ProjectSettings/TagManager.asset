@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - ctrel0kPos
+  - HeroGun
+  - EnemyGun
+  - Medicine
   layers:
   - Default
   - TransparentFX

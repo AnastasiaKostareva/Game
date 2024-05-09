@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,13 @@ public class playerVisual : MonoBehaviour
     private Animator animator;
     private const string IS_RUN = "isRun";
     private SpriteRenderer spriteRenderer;
-
+    private GameObject gun;
+    
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gun = HelpTool.FindNearestGameObject("HeroGun", gameObject);
     }
 
     private void Update()
@@ -31,9 +34,17 @@ public class playerVisual : MonoBehaviour
     {
         var positionMause = GetMousePosition();
         var positionPlayer = Player.Instance.GetPositionPlayer();
+        var gunRender = gun.GetComponent<SpriteRenderer>();
         if (positionPlayer.x <= positionMause.x)
+        {
             spriteRenderer.flipX = false;
+            gunRender.flipY = false;
+        }
         else
+        {
             spriteRenderer.flipX = true;
+            gunRender.flipY = true;
+        }
+            
     }
 }

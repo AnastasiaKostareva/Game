@@ -161,7 +161,7 @@ MonoBehaviour:
   hp: 5
   damage: 2
   resist: 0
-  delay: 1
+  delay: 0
 --- !u!50 &6289079243855657454
 Rigidbody2D:
   serializedVersion: 4

@@ -25,7 +25,6 @@ public class Entity : MonoBehaviour
         if (resist <= 0)
         {
             hp -= damage;
-            resist = delay;
         }
     }
 }

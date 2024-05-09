@@ -108,18 +108,15 @@ public class Player : MonoBehaviour
         return playerPosition;
     }
 
-    private void TakeDamage()
+    public void TakeDamage()
     {
         var hit = Physics2D.Raycast(transform.position, transform.forward, 1, whatIsSolid);
         if (hit.collider is not null)
         {
-            if (hit.collider.CompareTag("Enemy"))
+            if (resistance <= 0)
             {
-                if (resistance <= 0)
-                {
-                    hp -= hit.collider.GetComponent<Entity>().damage;
-                    resistance = 0.6f;
-                }
+                hp -= hit.collider.GetComponent<Entity>().damage;
+                resistance = 0.6f;
             }
         }
     }
