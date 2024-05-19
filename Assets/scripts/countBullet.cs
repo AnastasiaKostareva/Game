@@ -20,6 +20,6 @@ public class CountBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Патроны: " + weapon.countBullet.ToString();
+        text.text = weapon.countBullet.ToString();
     }
 }
