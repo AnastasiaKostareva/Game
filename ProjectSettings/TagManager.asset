@@ -11,6 +11,7 @@ TagManager:
   - Medicine
   - BossRageShootPos
   - enemyBullet
+  - canvas
   layers:
   - Default
   - TransparentFX

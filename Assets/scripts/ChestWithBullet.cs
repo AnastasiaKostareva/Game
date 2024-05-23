@@ -19,7 +19,7 @@ public class ChestWithBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HelpTool.FindDistance(gameObject, GameObject.FindGameObjectWithTag("Player")) <= requireddistance)
+        if (GameObject.FindGameObjectWithTag("Player") != null && HelpTool.FindDistance(gameObject, GameObject.FindGameObjectWithTag("Player")) <= requireddistance)
         {
             weapon.countBullet += boostBullet;
             Destroy(gameObject);

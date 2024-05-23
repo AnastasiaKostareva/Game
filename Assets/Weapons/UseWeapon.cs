@@ -9,6 +9,12 @@ public class UseWeapon : MonoBehaviour
     public float delay;
     private float timeBetweenShots;
     public int countBullet = 10;
+    private PauseMenu pause;
+
+    private void Awake()
+    {
+        pause = FindObjectOfType<PauseMenu>();
+    }
 
     private void RotateGun()
     {
@@ -19,16 +25,19 @@ public class UseWeapon : MonoBehaviour
 
     void Update()
     {
-        RotateGun();
-        if (timeBetweenShots <= 0)
+        if (!pause.PauseGame)
         {
-            if (Input.GetMouseButton(0) && countBullet > 0)
+            RotateGun();
+            if (timeBetweenShots <= 0)
             {
-                Instantiate(bullet, shootPos.position, transform.rotation);
-                timeBetweenShots = delay;
-                countBullet -= 1;
+                if (Input.GetMouseButton(0) && countBullet > 0)
+                {
+                    Instantiate(bullet, shootPos.position, transform.rotation);
+                    timeBetweenShots = delay;
+                    countBullet -= 1;
+                }
             }
+            else timeBetweenShots -= Time.deltaTime;
         }
-        else timeBetweenShots -= Time.deltaTime;
     }
 }
