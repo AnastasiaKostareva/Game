@@ -55,7 +55,6 @@ public class Ctrelok : MonoBehaviour
             {
                 if (possiblePos.Length > 0)
                 {
-                    Console.WriteLine(possiblePos.Length);
                     var nextPos = FindNextPos(playerPos);
                     transform.position = nextPos.transform.position;
                 }

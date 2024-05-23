@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        dashKoef = DashPower / 20;
+        dashKoef = DashPower / 40;
         Instance = this;
         input = new Controls();
         collider = gameObject.GetComponent<BoxCollider2D>();
@@ -76,8 +76,8 @@ public class Player : MonoBehaviour
             curDashPower = DashPower;
             isDashing = true;
         }
-
-        rigidbody.velocity = new Vector2(movementX, movementY) + FindDashVector();
+        if (movementY != 0 && movementX != 0) rigidbody.velocity = new Vector2(movementX, movementY) * 2 / 3 + FindDashVector();
+        else rigidbody.velocity = new Vector2(movementX, movementY) + FindDashVector();
     }
 
     private Vector2 FindDashVector()
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         var hit = Physics2D.Raycast(transform.position, transform.forward, 1, whatIsSolid);
         if (hit.collider is not null)
         {
-            if (resistance <= 0)
+            if (resistance <= 0 && !isDashing)
             {
                 hp -= hit.collider.GetComponent<Entity>().damage;
                 resistance = 0.6f;

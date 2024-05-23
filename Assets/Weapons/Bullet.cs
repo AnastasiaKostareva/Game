@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        var hit = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
+        var hit = Physics2D.Raycast(transform.position, transform.right, distance, whatIsSolid);
         if (hit.collider is not null)
         {
             if (hit.collider.CompareTag("Enemy"))
@@ -21,7 +21,9 @@ public class Bullet : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Player"))
             {
-                hit.collider.GetComponent<Player>().hp -= damage;
+                var player = hit.collider.GetComponent<Player>();
+                player.hp -= damage;
+                player.resistance = 0.3f;
             }
             Destroy(gameObject);
         }
