@@ -8,7 +8,7 @@ using Random = System.Random;
 public class Ctrelok : MonoBehaviour
 {
     private GameObject[] possiblePos;
-    private GameObject player;
+    public GameObject player;
     private GameObject gun;
     private Rigidbody2D body;
     public float teleportTime = 0.3f;
@@ -28,6 +28,8 @@ public class Ctrelok : MonoBehaviour
     void Update()
     {
         var playerPos = player.transform.position;
+        var diffPos = playerPos - transform.position;
+        if (diffPos.x * diffPos.x + diffPos.y * diffPos.y >50) return;
         var gunRender = gun.GetComponent<SpriteRenderer>();
         if (playerPos.x > transform.position.x)
         {
@@ -39,7 +41,7 @@ public class Ctrelok : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
             gunRender.flipY = true;
         }
-        
+
         Shoot(playerPos);
         Teleport(playerPos);
     }
