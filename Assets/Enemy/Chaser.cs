@@ -22,7 +22,7 @@ public class Chaser : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         body = gameObject.GetComponent<Rigidbody2D>();
-        _attackTime = 60 * Time.deltaTime;
+        _attackTime = 45 * Time.deltaTime;
     }
 
     void Update()
@@ -48,7 +48,7 @@ public class Chaser : MonoBehaviour
             }
             else
             {
-                _attackTime = 600 * Time.deltaTime;
+                _attackTime = 450 * Time.deltaTime;
                 isAttacking = false;
             }
         }
@@ -58,7 +58,7 @@ public class Chaser : MonoBehaviour
         {
             isTriggered = true;
             body.velocity = playerPos.normalized * speed;
-            if (playerPos.x * playerPos.x + playerPos.y * playerPos.y < 0.7)
+            if (playerPos.x * playerPos.x < 0.1 &&  playerPos.y * playerPos.y < 0.01)
             {
                 isAttacking = true;
             }

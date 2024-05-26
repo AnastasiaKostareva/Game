@@ -6,7 +6,8 @@ using Random = System.Random;
 
 public class Boss : MonoBehaviour
 {
-    private bool isTriggered;
+    public bool isTriggered;
+    public bool isShooting;
     private GameObject player;
     private Rigidbody2D body;
     public float speed;
@@ -112,6 +113,7 @@ public class Boss : MonoBehaviour
         var length = possiblePos.Length;
         if (tpCooldown <= 0)
         {
+            isShooting = false;
             tpCooldown = 1.5f;
             var nextPos = possiblePos[new Random().Next(length)];
             transform.position = nextPos.transform.position;
@@ -119,6 +121,7 @@ public class Boss : MonoBehaviour
         }
         else if (shootCooldown <= 0)
         {
+            isShooting = true;
             ShootAfterTP();
             shootCooldown = 0.1f;
         }
@@ -144,6 +147,7 @@ public class Boss : MonoBehaviour
                 Teleport();
             else
             {
+                isShooting = false;
                 lastAction = actions.teleport;
                 tpCount = 0;
             }

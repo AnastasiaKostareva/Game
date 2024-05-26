@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
             if (resistance <= 0 && !isDashing)
             {
                 hp -= hit.collider.GetComponent<Entity>().damage;
-                resistance = 0.6f;
+                resistance = 1f;
             }
         }
         /*var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);

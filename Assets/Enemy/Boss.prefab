@@ -324,7 +324,7 @@ MonoBehaviour:
   speed: 0
   chargeSpeed: 25
   chargeCount: 0
-  bullet: {fileID: 6696029347235233424, guid: 33ebaf8b620b8794d8f43790aead3f92, type: 3}
+  bullet: {fileID: 7338962236573000746, guid: 917b8a659108e8c46a8ce09b8d621157, type: 3}
   shootPos: {fileID: 3600183411212130990}
   Centre: {fileID: 0}
 --- !u!50 &4057434638681570022
