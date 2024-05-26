@@ -12,6 +12,7 @@ public class Chaser : MonoBehaviour
     private Rigidbody2D body;
     public float speed;
     private float walkCooldown;
+    private float _attackTime;
     private bool forwalk;
     public bool isMoving;
     public bool isAttacking;
@@ -21,25 +22,50 @@ public class Chaser : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         body = gameObject.GetComponent<Rigidbody2D>();
+        _attackTime = 60 * Time.deltaTime;
     }
 
     void Update()
     {
         walkCooldown -= Time.deltaTime;
         GetComponent<SpriteRenderer>().flipX = body.velocity.x < 0;
+        if (body.velocity.x == 0)
+            GetComponent<SpriteRenderer>().flipX =
+                body.transform.position.x - player.transform.position.x > 0;
         Chase();
     }
 
     void Chase()
     {
         var playerPos = player.transform.position - transform.position;
+        if (isAttacking)
+        {
+            if (_attackTime > 0)
+            {
+                body.velocity = new Vector2();
+                _attackTime -= Time.deltaTime;
+                return;
+            }
+            else
+            {
+                _attackTime = 600 * Time.deltaTime;
+                isAttacking = false;
+            }
+        }
         if (Mathf.Abs(body.velocity.x) < 1e-6 && Mathf.Abs(body.velocity.y) < 1e-6) isMoving = false;
 
         if ( isTriggered || playerPos.x * playerPos.x + playerPos.y * playerPos.y <= 25)
         {
             isTriggered = true;
             body.velocity = playerPos.normalized * speed;
-            isMoving = true;
+            if (playerPos.x * playerPos.x + playerPos.y * playerPos.y < 0.7)
+            {
+                isAttacking = true;
+            }
+            else
+            {
+                isMoving = true;
+            }
         }
         else if (walkCooldown <= 0)
         {
