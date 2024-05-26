@@ -41,11 +41,13 @@ public class playerVisual : MonoBehaviour
         {
             spriteRenderer.flipX = false;
             gunRender.flipY = false;
+            gun.transform.position = transform.position + new Vector3(0.7f, 0, 0);
         }
         else if (positionPlayer.x > positionMause.x && !pause.PauseGame)
         {
             spriteRenderer.flipX = true;
             gunRender.flipY = true;
+            gun.transform.position = transform.position + new Vector3(-0.7f, 0, 0);
         }   
     }
 }

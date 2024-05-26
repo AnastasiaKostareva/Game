@@ -51,7 +51,11 @@ public class Player : MonoBehaviour
     {
         TakeDamage();
         resistance -= Time.deltaTime;
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(0);
+        }
         Move();
         curDashPower -= dashKoef;
         dashCoolDwon -= Time.deltaTime;
