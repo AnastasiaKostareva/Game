@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
-        var hit = Physics2D.Raycast(transform.position, transform.forward, 1, whatIsSolid);
+        var hit = Physics2D.Raycast(transform.position, transform.forward, 10f, whatIsSolid);
         if (hit.collider is not null)
         {
             if (resistance <= 0 && !isDashing)
@@ -123,6 +123,19 @@ public class Player : MonoBehaviour
                 resistance = 0.6f;
             }
         }
+        /*var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+
+        foreach (var localCollider in colliders)
+        {
+            if (localCollider.gameObject.CompareTag("Enemy")) // исключаем сам объект из результата
+            {
+                if (resistance <= 0 && !isDashing)
+                {
+                    hp -= localCollider.GetComponent<Entity>().damage;
+                    resistance = 0.6f;
+                }
+            }
+        }*/
     }
 
     private void OnEnable() => input.Enable();
