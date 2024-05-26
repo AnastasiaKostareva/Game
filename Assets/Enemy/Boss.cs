@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
 {
     public bool isTriggered;
     public bool isShooting;
+    public bool isTeleporting;
     private GameObject player;
     private Rigidbody2D body;
     public float speed;
@@ -113,14 +114,17 @@ public class Boss : MonoBehaviour
         var length = possiblePos.Length;
         if (tpCooldown <= 0)
         {
+            isTeleporting = true;
             isShooting = false;
             tpCooldown = 1.5f;
             var nextPos = possiblePos[new Random().Next(length)];
             transform.position = nextPos.transform.position;
             tpCount++;
+            if (tpCount > 5) isTeleporting = false;
         }
         else if (shootCooldown <= 0)
         {
+            isTeleporting = false;
             isShooting = true;
             ShootAfterTP();
             shootCooldown = 0.1f;
