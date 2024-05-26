@@ -1,0 +1,643 @@
+fileFormatVersion: 2
+guid: 1aa7b86a2bf5c834ca1fbfeae319f948
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: VFX Blood Concepts_Frame_0
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1356
+      y: 788
+      width: 384
+      height: 384
+    spriteID: 660636058ed87f040ae77d49c4bce30e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1356, y: 788}
+  - name: VFX Blood Concepts_Frame_1
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1180
+      width: 384
+      height: 384
+    spriteID: 126d7ed4a23b2294598ced4b13b423e4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1180}
+  - name: VFX Blood Concepts_Frame_2
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 1180
+      width: 384
+      height: 384
+    spriteID: 13edd277f31ec854381d213ed003a0b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 1180}
+  - name: VFX Blood Concepts_Frame_3
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 788
+      y: 1180
+      width: 384
+      height: 384
+    spriteID: b5dbaf4957425fa41a8c64d5d920de05
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 788, y: 1180}
+  - name: VFX Blood Concepts_Frame_4
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1180
+      y: 1180
+      width: 384
+      height: 384
+    spriteID: cadc5e95d97681f45ad59afb6c6a81fc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1180, y: 1180}
+  - name: VFX Blood Concepts_Frame_5
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1572
+      y: 1180
+      width: 384
+      height: 384
+    spriteID: cb70fb1bbf7fb7448b2229723f81b3db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1572, y: 1180}
+  - name: VFX Blood Concepts_Frame_6
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1572
+      width: 384
+      height: 384
+    spriteID: 9ee91373d48a1a448b32d29b7708b0ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1572}
+  - name: VFX Blood Concepts_Frame_7
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 1572
+      width: 384
+      height: 384
+    spriteID: 04a030f99aacc734f93da6ebeed22a1f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 1572}
+  - name: VFX Blood Concepts_Frame_8
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 788
+      y: 1572
+      width: 384
+      height: 384
+    spriteID: c1618ed6596863c499f7a6eac1bafa3d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 788, y: 1572}
+  - name: VFX Blood Concepts_Frame_9
+    originalName: 
+    pivot: {x: 0.5710015, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 396
+      width: 669
+      height: 384
+    spriteID: 800f5ef235e187e4bb69a229c8253174
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 396}
+  - name: VFX Blood Concepts_Frame_10
+    originalName: 
+    pivot: {x: 0.5710015, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 681
+      y: 396
+      width: 669
+      height: 384
+    spriteID: ee74c6a952653a54da9b5f63fe0c9d63
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 681, y: 396}
+  - name: VFX Blood Concepts_Frame_11
+    originalName: 
+    pivot: {x: 0.5716418, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 670
+      height: 384
+    spriteID: 251ecea1ef86c604e9791c7765b57a64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: VFX Blood Concepts_Frame_12
+    originalName: 
+    pivot: {x: 0.5716418, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 682
+      y: 4
+      width: 670
+      height: 384
+    spriteID: 83de19d5606d7e54892924939834cf2d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 682, y: 4}
+  - name: VFX Blood Concepts_Frame_13
+    originalName: 
+    pivot: {x: 0.5716418, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1360
+      y: 4
+      width: 670
+      height: 384
+    spriteID: 79cccbd3c9a38d642840debd91ad4588
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1360, y: 4}
+  - name: VFX Blood Concepts_Frame_14
+    originalName: 
+    pivot: {x: 0.5703593, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1358
+      y: 396
+      width: 668
+      height: 384
+    spriteID: 7d5de042032252e469dd2b5aa0370c44
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1358, y: 396}
+  - name: VFX Blood Concepts_Frame_15
+    originalName: 
+    pivot: {x: 0.5703593, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 788
+      width: 668
+      height: 384
+    spriteID: 46fb7a363c450434daf7f24ce6efa441
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 788}
+  - name: VFX Blood Concepts_Frame_16
+    originalName: 
+    pivot: {x: 0.5703593, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 680
+      y: 788
+      width: 668
+      height: 384
+    spriteID: b95abe1e586437749aae5e95cf57af98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 680, y: 788}
+  - name: VFX Blood Concepts_Frame_17
+    originalName: 
+    pivot: {x: 0.25260416, y: 0.49479166}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1180
+      y: 1572
+      width: 384
+      height: 384
+    spriteID: d4c98ca17c99c694cabfe164e586debb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1180, y: 1572}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -786864203
+    name: VFX Blood Concepts
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: VFX Blood Concepts_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: 660636058ed87f040ae77d49c4bce30e
+    - name: VFX Blood Concepts_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: 126d7ed4a23b2294598ced4b13b423e4
+    - name: VFX Blood Concepts_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: 13edd277f31ec854381d213ed003a0b4
+    - name: VFX Blood Concepts_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: b5dbaf4957425fa41a8c64d5d920de05
+    - name: VFX Blood Concepts_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: cadc5e95d97681f45ad59afb6c6a81fc
+    - name: VFX Blood Concepts_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: cb70fb1bbf7fb7448b2229723f81b3db
+    - name: VFX Blood Concepts_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: 9ee91373d48a1a448b32d29b7708b0ed
+    - name: VFX Blood Concepts_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: 04a030f99aacc734f93da6ebeed22a1f
+    - name: VFX Blood Concepts_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: c1618ed6596863c499f7a6eac1bafa3d
+    - name: VFX Blood Concepts_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: -285
+        y: -190
+        width: 669
+        height: 384
+      spriteId: 800f5ef235e187e4bb69a229c8253174
+    - name: VFX Blood Concepts_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: -285
+        y: -190
+        width: 669
+        height: 384
+      spriteId: ee74c6a952653a54da9b5f63fe0c9d63
+    - name: VFX Blood Concepts_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: -286
+        y: -190
+        width: 670
+        height: 384
+      spriteId: 251ecea1ef86c604e9791c7765b57a64
+    - name: VFX Blood Concepts_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: -286
+        y: -190
+        width: 670
+        height: 384
+      spriteId: 83de19d5606d7e54892924939834cf2d
+    - name: VFX Blood Concepts_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: -286
+        y: -190
+        width: 670
+        height: 384
+      spriteId: 79cccbd3c9a38d642840debd91ad4588
+    - name: VFX Blood Concepts_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: -284
+        y: -190
+        width: 668
+        height: 384
+      spriteId: 7d5de042032252e469dd2b5aa0370c44
+    - name: VFX Blood Concepts_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: -284
+        y: -190
+        width: 668
+        height: 384
+      spriteId: 46fb7a363c450434daf7f24ce6efa441
+    - name: VFX Blood Concepts_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: -284
+        y: -190
+        width: 668
+        height: 384
+      spriteId: b95abe1e586437749aae5e95cf57af98
+    - name: VFX Blood Concepts_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 0
+        y: -190
+        width: 384
+        height: 384
+      spriteId: d4c98ca17c99c694cabfe164e586debb
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 194, y: 194}
