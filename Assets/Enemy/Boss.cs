@@ -29,7 +29,7 @@ public class Boss : MonoBehaviour
     private bool atCentre;
     private GameObject[] rageShootPos;
     private float rotation;
-    private float invincibleTime = 12f;
+    private float invincibleTime = 20f;
     private int maxDash = 3;
 
     private enum actions
@@ -66,7 +66,9 @@ public class Boss : MonoBehaviour
                 Centre.GetComponent<BoxCollider2D>().enabled = true;
                 body.velocity = Vector2.zero;
             }
-            Rage();
+
+            if (invincibleTime <= 15f) Rage();
+            else invincibleTime -= Time.deltaTime;
         }
         else
         {
@@ -117,8 +119,16 @@ public class Boss : MonoBehaviour
             isTeleporting = true;
             isShooting = false;
             tpCooldown = 1.5f;
-            var nextPos = possiblePos[new Random().Next(length)];
-            transform.position = nextPos.transform.position;
+            while (true)
+            {
+                var nextPos = possiblePos[new Random().Next(length)];
+                if (HelpTool.FindDistance(nextPos, player) >= 15f)
+                {
+                    transform.position = nextPos.transform.position;
+                    break;
+                }
+            }
+
             tpCount++;
             if (tpCount > 5) isTeleporting = false;
         }

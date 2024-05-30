@@ -9,7 +9,7 @@ public class Ctrelok : MonoBehaviour
 {
     private GameObject[] possiblePos;
     public GameObject player;
-    private GameObject gun;
+    //private GameObject gun;
     private Rigidbody2D body;
     public float teleportTime = 0.3f;
     private bool isTriggered = false;
@@ -22,24 +22,24 @@ public class Ctrelok : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = gameObject.GetComponent<Rigidbody2D>();
         possiblePos = GameObject.FindGameObjectsWithTag("ctrel0kPos");
-        gun = HelpTool.FindNearestGameObject("EnemyGun", gameObject);
+        //gun = HelpTool.FindNearestGameObject("EnemyGun", gameObject);
     }
 
     void Update()
     {
         var playerPos = player.transform.position;
         var diffPos = playerPos - transform.position;
-        if (diffPos.x * diffPos.x + diffPos.y * diffPos.y >50) return;
-        var gunRender = gun.GetComponent<SpriteRenderer>();
+        if (HelpTool.FindDistance(player,gameObject) >= 15f) return;
+        //var gunRender = gun.GetComponent<SpriteRenderer>();
         if (playerPos.x > transform.position.x)
         {
             GetComponent<SpriteRenderer>().flipX = false;
-            gunRender.flipY = false;
+            //gunRender.flipY = false;
         }
         else
         {
             GetComponent<SpriteRenderer>().flipX = true;
-            gunRender.flipY = true;
+            //gunRender.flipY = true;
         }
 
         Shoot(playerPos);
@@ -83,11 +83,11 @@ public class Ctrelok : MonoBehaviour
     {
         var direction = playerPos - transform.position;
         var koef = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        gun.transform.rotation = Quaternion.Euler(0, 0, koef);
+        shootPos.transform.rotation = Quaternion.Euler(0, 0, koef);
         
         if (timeBetweenShots <= 0)
         {
-            Instantiate(bullet, shootPos.position, gun.transform.rotation);
+            Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
             timeBetweenShots = 3f;
         }
         else timeBetweenShots -= Time.deltaTime;
