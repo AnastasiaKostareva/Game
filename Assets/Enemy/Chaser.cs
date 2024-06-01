@@ -8,8 +8,12 @@ using Random = System.Random;
 public class Chaser : MonoBehaviour
 {
     public bool isTriggered;
-    private Player player;
-    private Rigidbody2D body;
+    public bool damageSuccess;
+    private readonly float attackDamageDelay = 0.83f;
+    private readonly float attackDistance = 1.2f;
+    private Player _player;
+    private Entity _playerEntity;
+    private Rigidbody2D _body;
     public float speed;
     private float walkCooldown;
     private float _attackTime;
@@ -20,52 +24,40 @@ public class Chaser : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        body = gameObject.GetComponent<Rigidbody2D>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _playerEntity = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
+        _body = gameObject.GetComponent<Rigidbody2D>();
         _attackTime = 45 * Time.deltaTime;
     }
 
     void Update()
     {
         walkCooldown -= Time.deltaTime;
-        GetComponent<SpriteRenderer>().flipX = body.velocity.x < 0;
-        if (body.velocity.x == 0)
-            GetComponent<SpriteRenderer>().flipX =
-                body.transform.position.x - player.transform.position.x > 0;
-        Chase();
+        TurnToPlayer();
+        Behave();
+    }
+    
+
+
+    private void Behave()
+    {
+        var distanceToPlayer = Vector2.Distance(transform.position, _player.transform.position);
+        var playerPos = _player.transform.position - transform.position;
+
+        if (Mathf.Abs(_body.velocity.x) < 1e-6 && Mathf.Abs(_body.velocity.y) < 1e-6) isMoving = false;
+        else isMoving = true;
+
+        ChooseAction(distanceToPlayer, playerPos);
     }
 
-    void Chase()
+    private void ChooseAction(float distanceToPlayer, Vector3 playerPos)
     {
-        var playerPos = player.transform.position - transform.position;
-        if (isAttacking)
-        {
-            if (_attackTime > 0)
-            {
-                body.velocity = new Vector2();
-                _attackTime -= Time.deltaTime;
-                return;
-            }
-            else
-            {
-                _attackTime = 450 * Time.deltaTime;
-                isAttacking = false;
-            }
-        }
-        if (Mathf.Abs(body.velocity.x) < 1e-6 && Mathf.Abs(body.velocity.y) < 1e-6) isMoving = false;
-
-        if ( isTriggered || playerPos.x * playerPos.x + playerPos.y * playerPos.y <= 25)
+        if (isTriggered || distanceToPlayer <= 4.66f)
         {
             isTriggered = true;
-            body.velocity = playerPos.normalized * speed;
-            if (playerPos.x * playerPos.x < 0.1 &&  playerPos.y * playerPos.y < 0.01)
-            {
-                isAttacking = true;
-            }
-            else
-            {
-                isMoving = true;
-            }
+            _body.velocity = playerPos.normalized * speed;
+            isMoving = true;
+            TryAttack(distanceToPlayer);
         }
         else if (walkCooldown <= 0)
         {
@@ -79,10 +71,52 @@ public class Chaser : MonoBehaviour
                 forwalk = true;
                 walkCooldown = 120 * Time.deltaTime;
                 var random = new Random();
-                body.velocity = new Vector2(random.Next(2) - random.Next(2),
+                _body.velocity = new Vector2(random.Next(2) - random.Next(2),
                     random.Next(2) - random.Next(2));
                 isMoving = true;
             }
         }
+    }
+
+    private void TryAttack(float distanceToPlayer)
+    {
+        if (distanceToPlayer < attackDistance && isAttacking == false)
+        {
+            isMoving = false;
+            StartCoroutine(AttackCoroutine());
+        }
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        damageSuccess = true;
+        isAttacking = true;
+        var timer = 0f;
+
+        while (timer < attackDamageDelay)
+        {
+            _body.velocity = new Vector2();
+            isMoving = false;
+            var distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+            if (distanceToPlayer > attackDistance + 0.3f) // Если игрок вышел из радиуса поражения
+            {
+                damageSuccess = false;
+            }
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        isAttacking = false;
+        // Если цикл завершился и игрок не вышел из радиуса, то наносим урон
+        if (damageSuccess) _playerEntity.TakeDamage(1,attackDamageDelay);
+        isAttacking = false;
+    }
+    private void TurnToPlayer()
+    {
+        GetComponent<SpriteRenderer>().flipX = _body.velocity.x < 0;
+        if (_body.velocity.x == 0)
+            GetComponent<SpriteRenderer>().flipX =
+                _body.transform.position.x - _player.transform.position.x > 0;
     }
 }
