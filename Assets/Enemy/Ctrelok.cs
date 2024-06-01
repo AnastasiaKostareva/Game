@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class Ctrelok : MonoBehaviour
 {
     private GameObject[] possiblePos;
+
     public GameObject player;
 
     public bool isShooting;
@@ -22,6 +25,8 @@ public class Ctrelok : MonoBehaviour
     private float timeBetweenShots = 1.5f;
     private float shootTimePrepare = 0.75f;
     public Transform shootPos;
+    public bool ShouldDropKey;
+    public GameObject Key;
 
     private void Start()
     {
@@ -102,5 +107,10 @@ public class Ctrelok : MonoBehaviour
         Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
         timeBetweenShots = 1.5f;
         isShooting = false;
+    }
+
+    private void OnDestroy()
+    {
+        if (ShouldDropKey) Instantiate(Key, transform.position, transform.rotation);
     }
 }

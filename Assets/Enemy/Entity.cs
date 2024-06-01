@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Entity : MonoBehaviour
 {
@@ -11,11 +12,20 @@ public class Entity : MonoBehaviour
     public int maxHp;
     public bool isDead;
     public float deathTime = 2f;
+    public GameObject chest;
 
     private void Update()
     {
         if (hp <= 0)
         {
+            var flag = false;
+            if (gameObject.CompareTag("Player"))
+                flag = true;
+            Destroy(gameObject);
+            if (!flag && chest != null)
+                Instantiate(chest, transform.position, transform.rotation);
+            if (flag)
+                SceneManager.LoadScene("PlayersDeath");
             StartCoroutine(DeathRoutine());
         }
         resist -= Time.deltaTime;

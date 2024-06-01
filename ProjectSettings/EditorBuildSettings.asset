@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/leveL 00000.unity
     guid: 8f70cac40eab865449059f14224909a1
+  - enabled: 1
+    path: Assets/Scenes/PlayersDeath.unity
+    guid: 411feeaa2876d9041bf0e1a1b2fade43
   m_configObjects: {}

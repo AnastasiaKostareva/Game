@@ -119,32 +119,11 @@ public class Player : MonoBehaviour
         return playerPosition;
     }
 
-//     public void TakeDamage()
-//     {
-//         var hit = Physics2D.Raycast(transform.position, transform.forward, 10f, whatIsSolid);
-//         if (hit.collider is not null)
-//         {
-//             if (resistance <= 0 && !isDashing)
-//             {
-//                 hp -= hit.collider.GetComponent<Entity>().damage;
-//                 resistance = 1f;
-//             }
-//         }
-//         /*var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-//
-//         foreach (var localCollider in colliders)
-//         {
-//             if (localCollider.gameObject.CompareTag("Enemy")) // исключаем сам объект из результата
-//             {
-//                 if (resistance <= 0 && !isDashing)
-//                 {
-//                     hp -= localCollider.GetComponent<Entity>().damage;
-//                     resistance = 0.6f;
-//                 }
-//             }
-//         }*/
-//     }
-    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Spike"))
+            gameObject.GetComponent<Entity>().TakeDamage(3,0.3f);
+    }
 
     private void OnEnable() => input.Enable();
     private void OnDisable() => input.Disable();

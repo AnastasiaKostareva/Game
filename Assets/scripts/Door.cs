@@ -16,10 +16,14 @@ public class Door : MonoBehaviour
     void Update()
     {
         var player = playerAsObj.GetComponent<Player>();
-        if (HelpTool.FindDistance(gameObject, playerAsObj) <= 0.5f && player.keyCount > 0)
+        if (HelpTool.FindDistance(gameObject, playerAsObj) <= 1f && player.keyCount > 0)
         {
             player.interactionKey.GetComponent<SpriteRenderer>().enabled = true;
-            if (Input.GetKeyUp(KeyCode.E)) playerAsObj.transform.position = exit.transform.position;
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                playerAsObj.transform.position = exit.transform.position;
+                player.keyCount--;
+            }
         }
         else player.interactionKey.GetComponent<SpriteRenderer>().enabled = false;
     }

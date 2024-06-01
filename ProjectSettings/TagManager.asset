@@ -14,6 +14,7 @@ TagManager:
   - canvas
   - legs
   - interaction
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - enemy
   - enemyBullet
   - spikes
-  - 
+  - button
   - 
   - 
   - 
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: wall
     uniqueID: 160290037
+    locked: 0
+  - name: button
+    uniqueID: 641232685
     locked: 0
