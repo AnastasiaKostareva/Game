@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Entity : MonoBehaviour
 {
@@ -15,11 +16,14 @@ public class Entity : MonoBehaviour
     {
         if (hp <= 0)
         {
+            var flag = false;
+            if (gameObject.CompareTag("Player"))
+                flag = true;
             Destroy(gameObject);
-            if (chest != null)
-            {
+            if (!flag && chest != null)
                 Instantiate(chest, transform.position, transform.rotation);
-            }
+            if (flag)
+                SceneManager.LoadScene("PlayersDeath");
         }
         resist -= Time.deltaTime;
     }

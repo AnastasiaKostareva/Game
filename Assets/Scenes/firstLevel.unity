@@ -13302,7 +13302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56f60f6d0e51e474784c4bdacb7f163a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0220ff0dce6c796419efb6c94b4f1aa7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13511,6 +13511,10 @@ PrefabInstance:
     - target: {fileID: 7030738922643196673, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030738922643196673, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8792565971307930557, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
       propertyPath: m_LocalPosition.x
