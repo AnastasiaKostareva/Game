@@ -9,12 +9,17 @@ public class Entity : MonoBehaviour
     public int damage;
     public float resist;
     public int maxHp;
+    public GameObject chest;
 
     private void Update()
     {
         if (hp <= 0)
         {
             Destroy(gameObject);
+            if (chest != null)
+            {
+                Instantiate(chest, transform.position, transform.rotation);
+            }
         }
         resist -= Time.deltaTime;
     }
