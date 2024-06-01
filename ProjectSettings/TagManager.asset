@@ -13,6 +13,7 @@ TagManager:
   - enemyBullet
   - canvas
   - legs
+  - interaction
   layers:
   - Default
   - TransparentFX

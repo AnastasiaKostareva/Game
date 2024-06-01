@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MedicineChest : MonoBehaviour
 {
-    public Player player;
+    public Entity player;
     private int boostHP = 2;
     public int requireddistance = 3;
     
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
     }
     
     void Update()

@@ -7,19 +7,18 @@ using UnityEngine.EventSystems;
 public class Spikes : MonoBehaviour
 {
     private GameObject player;
-    private float coolDown;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("legs");
-    }
-    
-    void Update()
-    {
-        coolDown -= Time.deltaTime;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (coolDown <= 0) other.GetComponent<Player>().hp -= 1;
+        if (other.collider.CompareTag("Player"))
+        {
+            Debug.Log("jopa");
+            other.collider.GetComponent<Entity>().TakeDamage(3,0.3f);
+        }
+            
     }
 }

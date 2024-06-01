@@ -17,13 +17,12 @@ public class Bullet : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy"))
             {
-                hit.collider.GetComponent<Entity>().TakeDamage(damage);
+                hit.collider.GetComponent<Entity>().TakeDamage(damage,0.3f);
             }
             else if (hit.collider.CompareTag("Player"))
             {
-                var player = hit.collider.GetComponent<Player>();
-                player.hp -= damage;
-                player.resistance = 0.3f;
+                var player = hit.collider.GetComponent<Entity>();
+                player.TakeDamage(damage,1f);
             }
             Destroy(gameObject);
         }

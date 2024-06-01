@@ -1425,6 +1425,10 @@ PrefabInstance:
       value: -0.030272722
       objectReference: {fileID: 0}
     - target: {fileID: 6849986486234036006, guid: cc0e28cd2c92d3b4db2400d7d63a5db2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1152
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849986486234036006, guid: cc0e28cd2c92d3b4db2400d7d63a5db2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.79
       objectReference: {fileID: 0}
@@ -5112,6 +5116,10 @@ PrefabInstance:
     - target: {fileID: 2492310540805429810, guid: 46371e5fb58c6ae4c8fe85a66bafd75a, type: 3}
       propertyPath: countBullet
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2508635250892689257, guid: 46371e5fb58c6ae4c8fe85a66bafd75a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7030738922643196673, guid: 46371e5fb58c6ae4c8fe85a66bafd75a, type: 3}
       propertyPath: m_Name

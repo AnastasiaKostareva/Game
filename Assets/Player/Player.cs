@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
     private BoxCollider2D collider;
-    public LayerMask whatIsSolid;
 
     private Controls input;
     public float speed = 15;
@@ -29,10 +28,15 @@ public class Player : MonoBehaviour
 
     private float minMovementSpeed = 0.1f;
     private bool isRun = false;
+    
+    public int keyCount;
+    public GameObject interactionKey;
 
-    public int hp = 10;
-    public readonly int maxHp = 10;
-    public float resistance;
+    private void Start()
+    {
+        interactionKey = GameObject.FindGameObjectWithTag("interaction");
+        interactionKey.GetComponent<SpriteRenderer>().enabled = false;
+    }
 
     void Awake()
     {
@@ -49,13 +53,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        TakeDamage();
-        resistance -= Time.deltaTime;
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-            SceneManager.LoadScene(0);
-        }
+        //TakeDamage();
+        // resistance -= Time.deltaTime;
+        // if (hp <= 0)
+        // {
+        //     Destroy(gameObject);
+        //     SceneManager.LoadScene(0);
+        // }
+
         Move();
         curDashPower -= dashKoef;
         dashCoolDwon -= Time.deltaTime;
@@ -80,7 +85,9 @@ public class Player : MonoBehaviour
             curDashPower = DashPower;
             isDashing = true;
         }
-        if (movementY != 0 && movementX != 0) rigidbody.velocity = new Vector2(movementX, movementY) * 2 / 3 + FindDashVector();
+
+        if (movementY != 0 && movementX != 0)
+            rigidbody.velocity = new Vector2(movementX, movementY) * 2 / 3 + FindDashVector();
         else rigidbody.velocity = new Vector2(movementX, movementY) + FindDashVector();
     }
 
@@ -112,31 +119,32 @@ public class Player : MonoBehaviour
         return playerPosition;
     }
 
-    public void TakeDamage()
-    {
-        var hit = Physics2D.Raycast(transform.position, transform.forward, 10f, whatIsSolid);
-        if (hit.collider is not null)
-        {
-            if (resistance <= 0 && !isDashing)
-            {
-                hp -= hit.collider.GetComponent<Entity>().damage;
-                resistance = 1f;
-            }
-        }
-        /*var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-
-        foreach (var localCollider in colliders)
-        {
-            if (localCollider.gameObject.CompareTag("Enemy")) // исключаем сам объект из результата
-            {
-                if (resistance <= 0 && !isDashing)
-                {
-                    hp -= localCollider.GetComponent<Entity>().damage;
-                    resistance = 0.6f;
-                }
-            }
-        }*/
-    }
+//     public void TakeDamage()
+//     {
+//         var hit = Physics2D.Raycast(transform.position, transform.forward, 10f, whatIsSolid);
+//         if (hit.collider is not null)
+//         {
+//             if (resistance <= 0 && !isDashing)
+//             {
+//                 hp -= hit.collider.GetComponent<Entity>().damage;
+//                 resistance = 1f;
+//             }
+//         }
+//         /*var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+//
+//         foreach (var localCollider in colliders)
+//         {
+//             if (localCollider.gameObject.CompareTag("Enemy")) // исключаем сам объект из результата
+//             {
+//                 if (resistance <= 0 && !isDashing)
+//                 {
+//                     hp -= localCollider.GetComponent<Entity>().damage;
+//                     resistance = 0.6f;
+//                 }
+//             }
+//         }*/
+//     }
+    
 
     private void OnEnable() => input.Enable();
     private void OnDisable() => input.Disable();

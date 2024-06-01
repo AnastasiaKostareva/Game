@@ -4,12 +4,12 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Image healthBar;
-    public Player player;
+    public Entity player;
 
     void Start()
     {
         healthBar = GetComponent<Image>();
-        player = FindObjectOfType<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
     }
 
 

@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     public int hp;
     public int damage;
     public float resist;
-    public float delay;
+    public int maxHp;
 
     private void Update()
     {
@@ -16,15 +16,15 @@ public class Entity : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if (resist > 0) resist -= Time.deltaTime;
+        resist -= Time.deltaTime;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float delay)
     {
         if (resist <= 0)
         {
             hp -= damage;
+            resist = delay;
         }
     }
 }
