@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class Ctrelok : MonoBehaviour
 {
     private GameObject[] possiblePos;
+
     public GameObject player;
+
     //private GameObject gun;
     private Rigidbody2D body;
     public float teleportTime = 0.3f;
@@ -16,6 +20,8 @@ public class Ctrelok : MonoBehaviour
     public GameObject bullet;
     private float timeBetweenShots = 3f;
     public Transform shootPos;
+    public bool ShouldDropKey;
+    public GameObject Key;
 
     private void Start()
     {
@@ -29,7 +35,7 @@ public class Ctrelok : MonoBehaviour
     {
         var playerPos = player.transform.position;
         var diffPos = playerPos - transform.position;
-        if (HelpTool.FindDistance(player,gameObject) >= 15f) return;
+        if (HelpTool.FindDistance(player, gameObject) >= 15f) return;
         //var gunRender = gun.GetComponent<SpriteRenderer>();
         if (playerPos.x > transform.position.x)
         {
@@ -60,6 +66,7 @@ public class Ctrelok : MonoBehaviour
                     var nextPos = FindNextPos(playerPos);
                     transform.position = nextPos.transform.position;
                 }
+
                 isTriggered = false;
                 teleportTime = 0.3f;
             }
@@ -84,12 +91,17 @@ public class Ctrelok : MonoBehaviour
         var direction = playerPos - transform.position;
         var koef = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         shootPos.transform.rotation = Quaternion.Euler(0, 0, koef);
-        
+
         if (timeBetweenShots <= 0)
         {
             Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
             timeBetweenShots = 3f;
         }
         else timeBetweenShots -= Time.deltaTime;
+    }
+
+    private void OnDestroy()
+    {
+        if (ShouldDropKey) Instantiate(Key, transform.position, transform.rotation);
     }
 }
