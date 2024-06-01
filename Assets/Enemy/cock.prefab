@@ -105,7 +105,7 @@ MonoBehaviour:
   hp: 10
   damage: 0
   resist: 0
-  delay: 0
+  maxHp: 0
 --- !u!114 &8436972650439064456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  isShooting: 0
   teleportTime: 0.3
   bullet: {fileID: 7338962236573000746, guid: 917b8a659108e8c46a8ce09b8d621157, type: 3}
   shootPos: {fileID: 2762925188673571229}
@@ -236,6 +237,7 @@ GameObject:
   - component: {fileID: 2462603037803830087}
   - component: {fileID: 5602546261699191133}
   - component: {fileID: 8308882119444445966}
+  - component: {fileID: 5968626011415304391}
   m_Layer: 8
   m_Name: visual
   m_TagString: Untagged
@@ -331,3 +333,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5968626011415304391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020664783466229881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf0357441f48c24b9228e326266235e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -9,7 +9,7 @@ public class Chaser : MonoBehaviour
 {
     public bool isTriggered;
     public bool damageSuccess;
-    private readonly float attackDamageDelay = 0.83f;
+    private readonly float attackDamageDelay = 0.5f;
     private readonly float attackDistance = 1.2f;
     private Player _player;
     private Entity _playerEntity;
@@ -98,7 +98,7 @@ public class Chaser : MonoBehaviour
             _body.velocity = new Vector2();
             isMoving = false;
             var distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
-            if (distanceToPlayer > attackDistance + 0.3f) // Если игрок вышел из радиуса поражения
+            if (distanceToPlayer > attackDistance + 1f) // Если игрок вышел из радиуса поражения
             {
                 damageSuccess = false;
             }

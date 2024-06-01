@@ -9,12 +9,14 @@ public class Entity : MonoBehaviour
     public int damage;
     public float resist;
     public int maxHp;
+    public bool isDead;
+    public float deathTime = 2f;
 
     private void Update()
     {
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(DeathRoutine());
         }
         resist -= Time.deltaTime;
     }
@@ -26,5 +28,18 @@ public class Entity : MonoBehaviour
             hp -= damage;
             resist = delay;
         }
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        isDead = true;
+        var timer = 0f;
+
+        while (timer < deathTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

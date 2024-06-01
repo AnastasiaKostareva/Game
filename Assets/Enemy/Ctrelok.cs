@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = System.Random;
 
@@ -9,12 +10,17 @@ public class Ctrelok : MonoBehaviour
 {
     private GameObject[] possiblePos;
     public GameObject player;
+
+    public bool isShooting;
+
+    private bool canShoot;
     //private GameObject gun;
     private Rigidbody2D body;
     public float teleportTime = 0.3f;
     private bool isTriggered = false;
     public GameObject bullet;
-    private float timeBetweenShots = 3f;
+    private float timeBetweenShots = 1.5f;
+    private float shootTimePrepare = 0.75f;
     public Transform shootPos;
 
     private void Start()
@@ -29,21 +35,14 @@ public class Ctrelok : MonoBehaviour
     {
         var playerPos = player.transform.position;
         var diffPos = playerPos - transform.position;
-        if (HelpTool.FindDistance(player,gameObject) >= 15f) return;
+        if (HelpTool.FindDistance(player, gameObject) >= 15f) return;
         //var gunRender = gun.GetComponent<SpriteRenderer>();
-        if (playerPos.x > transform.position.x)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-            //gunRender.flipY = false;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-            //gunRender.flipY = true;
-        }
-
-        Shoot(playerPos);
+        GetComponent<SpriteRenderer>().flipX = !(playerPos.x > transform.position.x);
+        //gunRender.flipY = false;
+        //gunRender.flipY = true;
         Teleport(playerPos);
+        if (!isShooting && timeBetweenShots < 0) StartCoroutine(AttackCoroutine(playerPos));
+        else timeBetweenShots -= Time.deltaTime;
     }
 
     private void Teleport(Vector3 playerPos)
@@ -60,6 +59,7 @@ public class Ctrelok : MonoBehaviour
                     var nextPos = FindNextPos(playerPos);
                     transform.position = nextPos.transform.position;
                 }
+
                 isTriggered = false;
                 teleportTime = 0.3f;
             }
@@ -78,18 +78,29 @@ public class Ctrelok : MonoBehaviour
 
         return nextPos;
     }
+    
 
-    private void Shoot(Vector3 playerPos)
+    private IEnumerator AttackCoroutine(Vector3 playerPos)
     {
+        isShooting = true;
+        var timer = 0f;
+        while (timer < shootTimePrepare)
+        {
+            timer += Time.deltaTime;
+            var distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer > 5f)
+            {
+                isShooting = false;
+                timeBetweenShots = 1.5f;
+                yield break;
+            }
+            yield return null;
+        }
         var direction = playerPos - transform.position;
         var koef = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         shootPos.transform.rotation = Quaternion.Euler(0, 0, koef);
-        
-        if (timeBetweenShots <= 0)
-        {
-            Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
-            timeBetweenShots = 3f;
-        }
-        else timeBetweenShots -= Time.deltaTime;
+        Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
+        timeBetweenShots = 1.5f;
+        isShooting = false;
     }
 }

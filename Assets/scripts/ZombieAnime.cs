@@ -30,6 +30,7 @@ public class ZombieAnime : MonoBehaviour
           _zombieAnimator.SetBool(Running,_chaserParent.isMoving);
           _zombieAnimator.SetBool(Triggered,_chaserParent.isTriggered);
           _zombieAnimator.SetBool(Attacking, _chaserParent.isAttacking);
+          
           if (_chaserParent.isTriggered)
           {
               // GetComponent<SpriteRenderer>().flipX = !(_player.transform.position.x > transform.position.x - 0.1);
