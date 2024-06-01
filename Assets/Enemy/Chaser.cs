@@ -18,6 +18,7 @@ public class Chaser : MonoBehaviour
     private float walkCooldown;
     private float _attackTime;
     private bool forwalk;
+    public bool isDead;
     public bool isMoving;
     public bool isAttacking;
     private SpriteRenderer _spriteRenderer;
@@ -32,6 +33,11 @@ public class Chaser : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            _body.velocity = new Vector2();
+            return;
+        }
         walkCooldown -= Time.deltaTime;
         TurnToPlayer();
         Behave();

@@ -18,15 +18,17 @@ public class Entity : MonoBehaviour
     {
         if (hp <= 0)
         {
-            var flag = false;
-            if (gameObject.CompareTag("Player"))
-                flag = true;
-            Destroy(gameObject);
-            if (!flag && chest != null)
-                Instantiate(chest, transform.position, transform.rotation);
-            if (flag)
-                SceneManager.LoadScene("PlayersDeath");
+            var flag = gameObject.CompareTag("Player");
             StartCoroutine(DeathRoutine());
+            switch (flag)
+            {
+                case false when chest != null:
+                    Instantiate(chest, transform.position, transform.rotation);
+                    break;
+                case true:
+                    SceneManager.LoadScene("PlayersDeath");
+                    break;
+            }
         }
         resist -= Time.deltaTime;
     }
@@ -44,6 +46,10 @@ public class Entity : MonoBehaviour
     {
         isDead = true;
         var timer = 0f;
+        if (gameObject.GetComponent<Chaser>() != null)
+        {
+            gameObject.GetComponent<Chaser>().isDead = true;
+        }
 
         while (timer < deathTime)
         {

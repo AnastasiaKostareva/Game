@@ -150,6 +150,7 @@ MonoBehaviour:
   isTriggered: 0
   damageSuccess: 0
   speed: 7
+  isDead: 0
   isMoving: 0
   isAttacking: 0
 --- !u!114 &7220832251598646771
@@ -168,6 +169,9 @@ MonoBehaviour:
   damage: 2
   resist: 0
   maxHp: 0
+  isDead: 0
+  deathTime: 1
+  chest: {fileID: 0}
 --- !u!50 &6289079243855657454
 Rigidbody2D:
   serializedVersion: 4
