@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CockAudio : MonoBehaviour
 {
-    public AudioSource player;
+    [FormerlySerializedAs("player")] public AudioSource playa;
     public AudioClip attack;
     public AudioClip death;
     private Ctrelok _cock;
@@ -13,6 +14,7 @@ public class CockAudio : MonoBehaviour
     {
         _cock = gameObject.GetComponent<Ctrelok>();
         animator = gameObject.GetComponentInChildren<Animator>();
+        playa = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,14 +22,14 @@ public class CockAudio : MonoBehaviour
     {
         if (_cock.isShooting)
         {
-            player.clip = attack;
-            player.Play();
+            playa.clip = attack;
+            playa.Play();
         }
 
         if (_cock.isDead)
         {
-            player.clip = death;
-            player.Play();
+            playa.clip = death;
+            playa.Play();
         }
     }
 }

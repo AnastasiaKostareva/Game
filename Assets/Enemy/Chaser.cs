@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = System.Random;
 
 public class Chaser : MonoBehaviour
@@ -21,6 +22,8 @@ public class Chaser : MonoBehaviour
     public bool isDead;
     public bool isMoving;
     public bool isAttacking;
+    public AudioSource audioPlayer;
+    [FormerlySerializedAs("attack")] public AudioClip attackClip;
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
@@ -29,6 +32,7 @@ public class Chaser : MonoBehaviour
         _playerEntity = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
         _body = gameObject.GetComponent<Rigidbody2D>();
         _attackTime = 45 * Time.deltaTime;
+        audioPlayer = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     void Update()
@@ -89,6 +93,8 @@ public class Chaser : MonoBehaviour
         if (distanceToPlayer < attackDistance && isAttacking == false)
         {
             isMoving = false;
+            audioPlayer.clip = attackClip;
+            audioPlayer.Play();
             StartCoroutine(AttackCoroutine());
         }
     }
