@@ -46517,7 +46517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79814ea0cb1b17b419d2e6aca1bf9d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneIndex: 3
+  SceneIndex: 6
 --- !u!61 &1158641295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48239,7 +48239,7 @@ GameObject:
   - component: {fileID: 1722349927}
   - component: {fileID: 1722349926}
   - component: {fileID: 1722349925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

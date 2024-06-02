@@ -6,8 +6,8 @@ using UnityEngine;
 public class CounterMonsters : MonoBehaviour
 {
     public static CounterMonsters instance;
-    public TextMeshProUGUI counterText; // Ссылка на текст для отображения количества монстров
-    public int monsterCount; // Количество монстров
+    public TextMeshProUGUI counterText; // РЎСЃС‹Р»РєР° РЅР° С‚РµРєСЃС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° РјРѕРЅСЃС‚СЂРѕРІ
+    public int monsterCount; // РљРѕР»РёС‡РµСЃС‚РІРѕ РјРѕРЅСЃС‚СЂРѕРІ
 
     private void Awake()
     {
@@ -44,7 +44,7 @@ public class CounterMonsters : MonoBehaviour
     public void UpdateCounterText(string text = null)
     {
         if (text == null)
-            counterText.text = "Монстров: " + monsterCount;
+            counterText.text = "РњРѕРЅСЃС‚СЂРѕРІ: " + monsterCount;
         else
             counterText.text = text;
     }
