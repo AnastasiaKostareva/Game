@@ -9,6 +9,7 @@ public class BulletAudio : MonoBehaviour
     public AudioSource player;
     void Start()
     {
+        player = GameObject.Find("BulletAudio").GetComponent<AudioSource>();
         player.clip = sound;
         player.Play();
         
