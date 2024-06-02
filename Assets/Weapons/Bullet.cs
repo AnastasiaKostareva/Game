@@ -11,13 +11,7 @@ public class Bullet : MonoBehaviour
     public float distance;
     public int damage;
     public LayerMask whatIsSolid;
-    private AudioSource player;
 
-    private void Awake()
-    {
-        player = GameObject.Find("BulletAudio").GetComponent<AudioSource>();
-        player.Play();
-    }
 
     void Update()
     {
@@ -26,13 +20,14 @@ public class Bullet : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy"))
             {
-                hit.collider.GetComponent<Entity>().TakeDamage(damage,0.3f);
+                hit.collider.GetComponent<Entity>().TakeDamage(damage, 0.3f);
             }
             else if (hit.collider.CompareTag("Player"))
             {
                 var player = hit.collider.GetComponent<Entity>();
-                player.TakeDamage(damage,1f);
+                player.TakeDamage(damage, 1f);
             }
+
             Destroy(gameObject);
         }
 

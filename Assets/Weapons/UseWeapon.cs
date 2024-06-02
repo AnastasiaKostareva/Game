@@ -10,10 +10,12 @@ public class UseWeapon : MonoBehaviour
     private float timeBetweenShots;
     public int countBullet = 10;
     private PauseMenu pause;
+    private AudioClip shootAudio;
 
     private void Awake()
     {
         pause = FindObjectOfType<PauseMenu>();
+        shootAudio = Resources.Load<AudioClip>("shoot_sound");
     }
 
     private void RotateGun()
@@ -33,6 +35,13 @@ public class UseWeapon : MonoBehaviour
                 if (Input.GetMouseButton(0) && countBullet > 0)
                 {
                     Instantiate(bullet, shootPos.position, transform.rotation);
+                    GameObject audioObject = new GameObject("shootAudio");
+                    AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+                    audioSource.clip = shootAudio;
+                    audioSource.Play();
+
+                    // Уничтожаем объект для аудио после проигрывания звука
+                    Destroy(audioObject, audioSource.clip.length);
                     timeBetweenShots = delay;
                     countBullet -= 1;
                 }
