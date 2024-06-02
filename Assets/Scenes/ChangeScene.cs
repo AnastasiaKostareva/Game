@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public int SceneIndex;
+    private float timeBeforeSkip = 2.5f;
     void Update()
     {
-        if (Input.anyKey) SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
+        if (Input.anyKey && timeBeforeSkip <= 0) SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
+        timeBeforeSkip -= Time.deltaTime;
     }
 }

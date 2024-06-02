@@ -121,7 +121,7 @@ public class Chaser : MonoBehaviour
 
         isAttacking = false;
         // Если цикл завершился и игрок не вышел из радиуса, то наносим урон
-        if (damageSuccess) _playerEntity.TakeDamage(1,attackDamageDelay);
+        if (damageSuccess) _playerEntity.TakeDamage(4,attackDamageDelay);
         isAttacking = false;
     }
     private void TurnToPlayer()

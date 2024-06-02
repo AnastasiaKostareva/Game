@@ -100,10 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   distance: 1
-  damage: 3
+  damage: 2
   whatIsSolid:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
 --- !u!95 &451665333861185819
 Animator:
   serializedVersion: 5

@@ -53,14 +53,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //TakeDamage();
-        // resistance -= Time.deltaTime;
-        // if (hp <= 0)
-        // {
-        //     Destroy(gameObject);
-        //     SceneManager.LoadScene(0);
-        // }
-
         Move();
         curDashPower -= dashKoef;
         dashCoolDwon -= Time.deltaTime;
@@ -87,8 +79,8 @@ public class Player : MonoBehaviour
         }
 
         if (movementY != 0 && movementX != 0)
-            rigidbody.velocity = new Vector2(movementX, movementY) * 2 / 3 + FindDashVector();
-        else rigidbody.velocity = new Vector2(movementX, movementY) + FindDashVector();
+            rigidbody.velocity = new Vector2(movementX, movementY) * 1 / 2 + FindDashVector();
+        else rigidbody.velocity = (new Vector2(movementX, movementY) + FindDashVector()) * 3 / 4;
     }
 
     private Vector2 FindDashVector()
