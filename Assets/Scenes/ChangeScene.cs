@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public int SceneIndex;
-    private float timeBeforeSkip = 2.5f;
+    private float timeBeforeSkip = 1f;
     void Update()
     {
         if (Input.anyKey && timeBeforeSkip <= 0) SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
