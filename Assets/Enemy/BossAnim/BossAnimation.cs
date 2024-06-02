@@ -11,10 +11,12 @@ public class BossAnimation : MonoBehaviour
     private static readonly int Shooting = Animator.StringToHash(IsAttacking);
     private static readonly int Teleporting = Animator.StringToHash(IsTeleporting);
     private static readonly int Raging = Animator.StringToHash(OnRage);
+    private static readonly int Dying = Animator.StringToHash(IsDead);
     private const string IsCharging = "isCharging";
     private const string IsAttacking = "isAttacking";
     private const string IsTeleporting = "isTeleporting";
     private const string OnRage = "onRage";
+    private const string IsDead = "isDead";
     private void Awake()
     {
         _boss = gameObject.GetComponent<Boss>();
@@ -29,5 +31,6 @@ public class BossAnimation : MonoBehaviour
         _animator.SetBool(Shooting,_boss.isShooting);
         _animator.SetBool(Teleporting,_boss.isTeleporting);
         _animator.SetBool(Raging,_boss.onRage);
+        _animator.SetBool(Dying,_boss.isDead);
     }
 }

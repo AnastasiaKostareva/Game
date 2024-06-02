@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Processors;
+using UnityEngine.Serialization;
 using Random = System.Random;
 
 public class Boss : MonoBehaviour
@@ -11,6 +13,7 @@ public class Boss : MonoBehaviour
     public bool isTeleporting;
     public bool onRage;
     private bool _isFlaming;
+    [FormerlySerializedAs("_isDead")] public bool isDead;
     private GameObject player;
     private Rigidbody2D body;
     public float speed;
@@ -40,6 +43,7 @@ public class Boss : MonoBehaviour
     public AudioClip shootSound;
     public AudioClip rageSound;
     public AudioClip flameRageSound;
+    public AudioClip deathSound;
     public bool _isPlayingAttackAnimation;
     private Entity playerEntity;
 
@@ -70,6 +74,14 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (self.hp < 0)
+        {
+            if (!isDead)
+            {
+                StartCoroutine(SuddenDance());
+            }
+            return;
+        }
         // if (onRage)
         // {
         //     StartCoroutine(PlayRangeAttackCoroutine(4.5f, rageSound));
@@ -269,4 +281,16 @@ public class Boss : MonoBehaviour
         playa.volume = 1f - Vector2.Distance(transform.position, player.transform.position) / 40;
         playa.Play();
     }
+
+    private IEnumerator SuddenDance()
+    {
+        Debug.Log("123132312");
+        isDead = true;
+        playa.Stop();
+        playa.clip = deathSound;
+        playa.Play();
+        yield return new WaitForSeconds(4f);
+        Destroy(gameObject);
+    }
+    
 }

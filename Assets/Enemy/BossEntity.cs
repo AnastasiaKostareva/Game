@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class Entity : MonoBehaviour
+public class BossEntity : MonoBehaviour
 {
     public int hp;
     public float resist;
@@ -16,7 +15,7 @@ public class Entity : MonoBehaviour
 
     private void Update()
     {
-        if (hp <= 0 && gameObject.name != "Boss")
+        /*if (hp <= 0)
         {
             var flag = gameObject.CompareTag("Player");
             StartCoroutine(DeathRoutine());
@@ -30,7 +29,7 @@ public class Entity : MonoBehaviour
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                     break;
             }
-        }
+        }*/
         resist -= Time.deltaTime;
     }
 
