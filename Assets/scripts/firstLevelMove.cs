@@ -11,7 +11,7 @@ public class firstLevelMove : MonoBehaviour
     {
         if (SceneIndex - 1 == 2 && other.tag == "Player")
         {
-            if (CounterMonsters.instance.monsterCount == 0)
+            if (CounterMonsters.instance.monsterCount <= 0)
                 SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
             else
                 CounterMonsters.instance.UpdateCounterText("Найди всех монстров");

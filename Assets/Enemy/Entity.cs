@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     public bool isDead;
     public float deathTime = 2f;
     public GameObject chest;
+    private bool flag2 = false;
 
     private void Update()
     {
@@ -60,10 +61,20 @@ public class Entity : MonoBehaviour
             timer += Time.deltaTime;    
             yield return null;
         }
-        if (chest != null)
+
+        if (chest != null && CounterMonsters.instance != null && !flag2)
+        {
             Instantiate(chest, transform.position, transform.rotation);
-        if (CounterMonsters.instance != null)
             CounterMonsters.instance.RemoveMonster();
+        }
+        else if (chest == null && CounterMonsters.instance != null && !flag2)
+        {
+            CounterMonsters.instance.RemoveMonster();
+        }
+        else if (chest != null && !flag2)
+            Instantiate(chest, transform.position, transform.rotation);
         Destroy(gameObject);
+
+        flag2 = true;
     }
 }
