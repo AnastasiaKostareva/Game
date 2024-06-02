@@ -59,7 +59,7 @@ public class Ctrelok : MonoBehaviour
     private void Teleport(Vector3 playerPos)
     {
         var inVisibleRadius = HelpTool.FindDistance(player, gameObject);
-        if (isTriggered || inVisibleRadius <= 7)
+        if (isTriggered || inVisibleRadius <= 6)
         {
             isTriggered = true;
             teleportTime -= Time.deltaTime;
