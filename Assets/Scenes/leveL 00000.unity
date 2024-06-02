@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: deathTime
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2657639574220766715, guid: b4854f982fcd2494b850ba2dbd8ee06e, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4479655027587544892, guid: b4854f982fcd2494b850ba2dbd8ee06e, type: 3}
       propertyPath: m_Name
       value: cock

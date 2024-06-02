@@ -50,6 +50,10 @@ public class Entity : MonoBehaviour
         {
             gameObject.GetComponent<Chaser>().isDead = true;
         }
+        else if (gameObject.GetComponent<Ctrelok>() != null)
+        {
+            gameObject.GetComponent<Ctrelok>().isDead = true;
+        }
 
         while (timer < deathTime)
         {

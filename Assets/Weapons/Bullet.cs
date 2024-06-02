@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -9,6 +11,13 @@ public class Bullet : MonoBehaviour
     public float distance;
     public int damage;
     public LayerMask whatIsSolid;
+    private AudioSource player;
+
+    private void Awake()
+    {
+        player = GameObject.Find("BulletAudio").GetComponent<AudioSource>();
+        player.Play();
+    }
 
     void Update()
     {

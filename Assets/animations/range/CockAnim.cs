@@ -24,6 +24,7 @@ public class CockAnim : MonoBehaviour
     {
         _animator.SetBool(Attacking,_cock.isShooting);
         _animator.SetBool(Dying,_cockEntity.isDead);
+        GetComponent<SpriteRenderer>().flipX = !(_cock.player.transform.position.x > transform.position.x);
     }
     
 }

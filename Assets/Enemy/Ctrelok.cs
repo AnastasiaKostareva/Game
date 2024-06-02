@@ -15,6 +15,7 @@ public class Ctrelok : MonoBehaviour
     public GameObject player;
 
     public bool isShooting;
+    public bool isDead;
 
     private bool canShoot;
     //private GameObject gun;
@@ -38,15 +39,13 @@ public class Ctrelok : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return;
         var playerPos = player.transform.position;
         var diffPos = playerPos - transform.position;
         if (HelpTool.FindDistance(player, gameObject) >= 15f) return;
-        //var gunRender = gun.GetComponent<SpriteRenderer>();
         GetComponent<SpriteRenderer>().flipX = !(playerPos.x > transform.position.x);
-        //gunRender.flipY = false;
-        //gunRender.flipY = true;
         Teleport(playerPos);
-        if (!isShooting && timeBetweenShots < 0) StartCoroutine(AttackCoroutine(playerPos));
+        if (!isShooting && timeBetweenShots < 0) StartCoroutine(AttackCoroutine());
         else timeBetweenShots -= Time.deltaTime;
     }
 
@@ -85,7 +84,7 @@ public class Ctrelok : MonoBehaviour
     }
     
 
-    private IEnumerator AttackCoroutine(Vector3 playerPos)
+    private IEnumerator AttackCoroutine()
     {
         isShooting = true;
         var timer = 0f;
@@ -93,7 +92,7 @@ public class Ctrelok : MonoBehaviour
         {
             timer += Time.deltaTime;
             var distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer > 5f)
+            if (distanceToPlayer > 15f)
             {
                 isShooting = false;
                 timeBetweenShots = 1.5f;
@@ -101,10 +100,10 @@ public class Ctrelok : MonoBehaviour
             }
             yield return null;
         }
-        var direction = playerPos - transform.position;
+        var direction = player.transform.position - transform.position;
         var koef = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         shootPos.transform.rotation = Quaternion.Euler(0, 0, koef);
-        Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
+        if (!isDead) Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
         timeBetweenShots = 1.5f;
         isShooting = false;
     }
