@@ -137,7 +137,10 @@ MonoBehaviour:
   hp: 250
   damage: 3
   resist: 0
-  delay: 0
+  maxHp: 0
+  isDead: 0
+  deathTime: 2
+  chest: {fileID: 0}
 --- !u!61 &7471153163761562910
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,9 +204,14 @@ MonoBehaviour:
   speed: 0
   chargeSpeed: 25
   chargeCount: 0
-  bullet: {fileID: 7338962236573000746, guid: 917b8a659108e8c46a8ce09b8d621157, type: 3}
+  bullet: {fileID: 7338962236573000746, guid: 578bed4652eab2a48ad32ce965f2ea7a, type: 3}
   shootPos: {fileID: 5232057711846806258}
   Centre: {fileID: 0}
+  playa: {fileID: 0}
+  chargeSound: {fileID: 0}
+  teleportSound: {fileID: 0}
+  shootSound: {fileID: 0}
+  _isPlayingAttackAnimation: 0
 --- !u!50 &8266146084418074780
 Rigidbody2D:
   serializedVersion: 4
