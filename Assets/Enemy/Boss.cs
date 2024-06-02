@@ -32,6 +32,12 @@ public class Boss : MonoBehaviour
     private float invincibleTime = 20f;
     private int maxDash = 3;
 
+    public AudioSource playa;
+    public AudioClip chargeSound;
+    public AudioClip teleportSound;
+    public AudioClip shootSound;
+    public bool _isPlayingAttackAnimation;
+
     private enum actions
     {
         charge,
@@ -52,6 +58,8 @@ public class Boss : MonoBehaviour
             rageShootPos[i].transform.rotation = Quaternion.Euler(0, 0, koef);
             koef += 90f;
         }
+
+        playa = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     void Update()
@@ -95,6 +103,8 @@ public class Boss : MonoBehaviour
             if (walkCooldown <= 0)
             {
                 body.velocity = (player.transform.position - transform.position).normalized * chargeSpeed;
+                //
+                PlayWithDistanceVolume(chargeSound);
                 chargeCount++;
                 walkCooldown = 1f;
             }
@@ -125,6 +135,7 @@ public class Boss : MonoBehaviour
                 if (HelpTool.FindDistance(nextPos, player) >= 15f)
                 {
                     transform.position = nextPos.transform.position;
+                    PlayWithDistanceVolume(teleportSound);
                     break;
                 }
             }
@@ -136,6 +147,11 @@ public class Boss : MonoBehaviour
         {
             isTeleporting = false;
             isShooting = true;
+            // if (isShooting)
+            // {
+            //     playa.clip = shootSound;
+            //     playa.Play();
+            // }
             ShootAfterTP();
             shootCooldown = 0.1f;
         }
@@ -147,6 +163,10 @@ public class Boss : MonoBehaviour
 
     void ShootAfterTP()
     {
+        if (!_isPlayingAttackAnimation)
+        {
+            StartCoroutine(PlayRangeAttackCoroutine());
+        }
         var direction = player.transform.position - transform.position;
         var koef = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         shootPos.rotation = Quaternion.Euler(0, 0, koef);
@@ -195,5 +215,22 @@ public class Boss : MonoBehaviour
         shootCooldown -= Time.deltaTime;
         shootPos.rotation = Quaternion.Euler(0, 0, rotation);
         rotation += 1f;
+    }
+
+    private IEnumerator PlayRangeAttackCoroutine()
+    {
+            _isPlayingAttackAnimation = true;
+            PlayWithDistanceVolume(shootSound);
+
+            yield return new WaitForSeconds(1.5f);
+
+            _isPlayingAttackAnimation = false;
+    }
+
+    private void PlayWithDistanceVolume(AudioClip sound)
+    {
+        playa.clip = sound;
+        playa.volume = 1f - Vector2.Distance(transform.position, player.transform.position) / 40;
+        playa.Play();
     }
 }
