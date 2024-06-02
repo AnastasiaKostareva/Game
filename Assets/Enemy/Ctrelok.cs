@@ -10,6 +10,10 @@ using Random = System.Random;
 
 public class Ctrelok : MonoBehaviour
 {
+    public AudioSource playa;
+    public AudioClip attack;
+    
+    
     private GameObject[] possiblePos;
 
     public GameObject player;
@@ -88,6 +92,8 @@ public class Ctrelok : MonoBehaviour
     private IEnumerator AttackCoroutine()
     {
         isShooting = true;
+        playa.clip = attack;
+        playa.Play();
         var timer = 0f;
         while (timer < shootTimePrepare)
         {
