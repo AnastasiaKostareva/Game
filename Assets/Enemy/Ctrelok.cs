@@ -43,7 +43,11 @@ public class Ctrelok : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead)
+        {
+            playa.Stop();
+            return;
+        }
         var playerPos = player.transform.position;
         var diffPos = playerPos - transform.position;
         if (HelpTool.FindDistance(player, gameObject) >= 15f) return;
