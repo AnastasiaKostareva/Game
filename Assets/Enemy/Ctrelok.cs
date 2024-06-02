@@ -45,7 +45,8 @@ public class Ctrelok : MonoBehaviour
         if (HelpTool.FindDistance(player, gameObject) >= 15f) return;
         GetComponent<SpriteRenderer>().flipX = !(playerPos.x > transform.position.x);
         Teleport(playerPos);
-        if (!isShooting && timeBetweenShots < 0) StartCoroutine(AttackCoroutine());
+        if (!isShooting && timeBetweenShots < 0) 
+            StartCoroutine(AttackCoroutine());
         else timeBetweenShots -= Time.deltaTime;
     }
 

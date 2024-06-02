@@ -35,10 +35,7 @@ public class UseWeapon : MonoBehaviour
                 if (Input.GetMouseButton(0) && countBullet > 0)
                 {
                     Instantiate(bullet, shootPos.position, transform.rotation);
-                    GameObject audioObject = new GameObject("shootAudio");
-                    AudioSource audioSource = audioObject.AddComponent<AudioSource>();
-                    audioSource.clip = shootAudio;
-                    audioSource.Play();
+                    var audioObject = createSound(out var audioSource);
 
                     // Уничтожаем объект для аудио после проигрывания звука
                     Destroy(audioObject, audioSource.clip.length);
@@ -48,5 +45,16 @@ public class UseWeapon : MonoBehaviour
             }
             else timeBetweenShots -= Time.deltaTime;
         }
+    }
+
+    private GameObject createSound(out AudioSource audioSource)
+    {
+        GameObject audioObject = new GameObject("shootAudio");
+        audioObject.transform.position = new Vector3(-1000, -1000);
+        audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.clip = shootAudio;
+        audioSource.volume = 0.12f;
+        audioSource.Play();
+        return audioObject;
     }
 }
