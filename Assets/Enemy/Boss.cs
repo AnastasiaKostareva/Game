@@ -9,6 +9,8 @@ public class Boss : MonoBehaviour
     public bool isTriggered;
     public bool isShooting;
     public bool isTeleporting;
+    public bool onRage;
+    private bool _isFlaming;
     private GameObject player;
     private Rigidbody2D body;
     public float speed;
@@ -29,14 +31,17 @@ public class Boss : MonoBehaviour
     private bool atCentre;
     private GameObject[] rageShootPos;
     private float rotation;
-    private float invincibleTime = 20f;
+    private float invincibleTime = 19f;
     private int maxDash = 3;
 
     public AudioSource playa;
     public AudioClip chargeSound;
     public AudioClip teleportSound;
     public AudioClip shootSound;
+    public AudioClip rageSound;
+    public AudioClip flameRageSound;
     public bool _isPlayingAttackAnimation;
+    private Entity playerEntity;
 
     private enum actions
     {
@@ -48,6 +53,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerEntity = player.GetComponent<Entity>();
         body = gameObject.GetComponent<Rigidbody2D>();
         possiblePos = GameObject.FindGameObjectsWithTag("ctrel0kPos");
         self = gameObject.GetComponent<Entity>();
@@ -64,6 +70,11 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        // if (onRage)
+        // {
+        //     StartCoroutine(PlayRangeAttackCoroutine(4.5f, rageSound));
+        // }
+        // if (playa.clip == rageSound && playa.isPlaying) Debug.Log("31312312123213");
         if (self.hp >= 150) AttackBeforeRage();
         else if (invincibleTime >= 0)
         {
@@ -71,15 +82,33 @@ public class Boss : MonoBehaviour
             {
                 transform.position = Centre.transform.position;
                 atCentre = true;
+                StartCoroutine(PlayRangeAttackCoroutine(0.5f, teleportSound));
+                
                 Centre.GetComponent<BoxCollider2D>().enabled = true;
                 body.velocity = Vector2.zero;
             }
 
-            if (invincibleTime <= 15f) Rage();
+            if (!onRage) StartCoroutine(PlayRangeAttackCoroutine(4f, rageSound));
+            onRage = true;
+            if (invincibleTime <= 14.8f)
+            {
+                if (!_isFlaming)
+                {
+                    Debug.Log("12312323123");
+                    playa.Stop();
+                    playa.clip = flameRageSound;
+                    playa.Play();
+                }
+
+                _isFlaming = true;
+                Rage();
+            }
             else invincibleTime -= Time.deltaTime;
         }
         else
         {
+            _isFlaming = false;
+            onRage = false;
             if (atCentre)
             {
                 atCentre = false;
@@ -103,6 +132,7 @@ public class Boss : MonoBehaviour
             if (walkCooldown <= 0)
             {
                 body.velocity = (player.transform.position - transform.position).normalized * chargeSpeed;
+
                 //
                 PlayWithDistanceVolume(chargeSound);
                 chargeCount++;
@@ -165,8 +195,9 @@ public class Boss : MonoBehaviour
     {
         if (!_isPlayingAttackAnimation)
         {
-            StartCoroutine(PlayRangeAttackCoroutine());
+            StartCoroutine(PlayRangeAttackCoroutine(1.5f, shootSound));
         }
+
         var direction = player.transform.position - transform.position;
         var koef = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         shootPos.rotation = Quaternion.Euler(0, 0, koef);
@@ -175,6 +206,11 @@ public class Boss : MonoBehaviour
 
     void AttackBeforeRage()
     {
+        if (isTriggered && Vector2.Distance(transform.position, player.transform.position) < 3f)
+        {
+            playerEntity.TakeDamage(2, 0.5f);
+        }
+
         if (lastAction == actions.charge && dashCooldown <= 0)
         {
             if (tpCount <= 5)
@@ -217,14 +253,14 @@ public class Boss : MonoBehaviour
         rotation += 1f;
     }
 
-    private IEnumerator PlayRangeAttackCoroutine()
+    private IEnumerator PlayRangeAttackCoroutine(float time, AudioClip sound)
     {
-            _isPlayingAttackAnimation = true;
-            PlayWithDistanceVolume(shootSound);
+        _isPlayingAttackAnimation = true;
+        PlayWithDistanceVolume(sound);
 
-            yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(time);
 
-            _isPlayingAttackAnimation = false;
+        _isPlayingAttackAnimation = false;
     }
 
     private void PlayWithDistanceVolume(AudioClip sound)
