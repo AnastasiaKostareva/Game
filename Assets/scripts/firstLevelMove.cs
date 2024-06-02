@@ -9,7 +9,14 @@ public class firstLevelMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (SceneIndex - 1 == 2 && other.tag == "Player")
+        {
+            if (CounterMonsters.instance.monsterCount == 0)
+                SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
+            else
+                CounterMonsters.instance.UpdateCounterText("Найди всех монстров");
+        } 
+        else if (other.tag == "Player")
         {
             SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
         }

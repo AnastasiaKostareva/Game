@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
             switch (flag)
             {
                 case false when chest != null:
-                    Instantiate(chest, transform.position, transform.rotation);
+                    
                     break;
                 case true:
                     SceneManager.LoadScene("PlayersDeath");
@@ -60,6 +60,10 @@ public class Entity : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+        if (chest != null)
+            Instantiate(chest, transform.position, transform.rotation);
+        if (CounterMonsters.instance != null)
+            CounterMonsters.instance.RemoveMonster();
         Destroy(gameObject);
     }
 }
