@@ -27,7 +27,8 @@ public class Entity : MonoBehaviour
                     
                     break;
                 case true:
-                    SceneManager.LoadScene("PlayersDeath");
+                    //SceneManager.LoadScene("PlayersDeath");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                     break;
             }
         }
