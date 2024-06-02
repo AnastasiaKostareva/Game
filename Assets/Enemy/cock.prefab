@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playa: {fileID: -7729940444136803326}
-  attack: {fileID: 8300000, guid: 084be97dbbbc0484aa20b97e2eb68675, type: 3}
+  attack: {fileID: 8300000, guid: 213371b7cb1bfff448813dd9bcb6b26d, type: 3}
+  death: {fileID: 8300000, guid: f4fc0036f127cf8499c190182a7380a3, type: 3}
   player: {fileID: 0}
   isShooting: 0
   isDead: 0

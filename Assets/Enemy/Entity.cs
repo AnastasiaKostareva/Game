@@ -57,7 +57,7 @@ public class Entity : MonoBehaviour
 
         while (timer < deathTime)
         {
-            timer += Time.deltaTime;
+            timer += Time.deltaTime;    
             yield return null;
         }
         if (chest != null)
