@@ -5,11 +5,15 @@ public class HealthBar : MonoBehaviour
 {
     public Image healthBar;
     public Entity player;
+    public string thisObjectName;
 
     void Start()
     {
         healthBar = GetComponent<Image>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();
+        if (thisObjectName != "" && thisObjectName != null)
+            player = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Entity>();
+        else
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>();  
     }
 
 

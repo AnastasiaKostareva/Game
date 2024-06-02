@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_Sprite: {fileID: 1046517911, guid: ae9319936906ed541aa25fea8b19454b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.053298593, y: 0.012563944}
+  m_Offset: {x: -0.064893365, y: 0.058943003}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65476346, y: 0.25872755}
+  m_Size: {x: 0.677953, y: 0.31670135}
   m_EdgeRadius: 0
 --- !u!1 &6901530337544693979
 GameObject:
@@ -426,6 +426,9 @@ MonoBehaviour:
   damage: 0
   resist: 0
   maxHp: 10
+  isDead: 0
+  deathTime: 2
+  chest: {fileID: 0}
 --- !u!1 &8307051108446365822
 GameObject:
   m_ObjectHideFlags: 0

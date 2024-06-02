@@ -22,7 +22,6 @@ public class Ctrelok : MonoBehaviour
     public bool isDead;
 
     private bool canShoot;
-    //private GameObject gun;
     private Rigidbody2D body;
     public float teleportTime = 0.3f;
     private bool isTriggered = false;
@@ -30,15 +29,14 @@ public class Ctrelok : MonoBehaviour
     private float timeBetweenShots = 1.5f;
     private float shootTimePrepare = 0.75f;
     public Transform shootPos;
-    public bool ShouldDropKey;
-    public GameObject Key;
+    public bool ShootEveryWay;
+    public bool CanTeleport;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         body = gameObject.GetComponent<Rigidbody2D>();
         possiblePos = GameObject.FindGameObjectsWithTag("ctrel0kPos");
-        //gun = HelpTool.FindNearestGameObject("EnemyGun", gameObject);
     }
 
     void Update()
@@ -50,9 +48,9 @@ public class Ctrelok : MonoBehaviour
         }
         var playerPos = player.transform.position;
         var diffPos = playerPos - transform.position;
-        if (HelpTool.FindDistance(player, gameObject) >= 15f) return;
+        if (HelpTool.FindDistance(player, gameObject) >= 15f && !ShootEveryWay) return;
         GetComponent<SpriteRenderer>().flipX = !(playerPos.x > transform.position.x);
-        Teleport(playerPos);
+        if (CanTeleport) Teleport(playerPos);
         if (!isShooting && timeBetweenShots < 0) 
             StartCoroutine(AttackCoroutine());
         else timeBetweenShots -= Time.deltaTime;
@@ -61,7 +59,7 @@ public class Ctrelok : MonoBehaviour
     private void Teleport(Vector3 playerPos)
     {
         var inVisibleRadius = HelpTool.FindDistance(player, gameObject);
-        if (isTriggered || inVisibleRadius <= 5)
+        if (isTriggered || inVisibleRadius <= 7)
         {
             isTriggered = true;
             teleportTime -= Time.deltaTime;
@@ -102,8 +100,8 @@ public class Ctrelok : MonoBehaviour
         while (timer < shootTimePrepare)
         {
             timer += Time.deltaTime;
-            var distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer > 15f)
+            var distanceToPlayer = HelpTool.FindDistance(gameObject,player);
+            if (distanceToPlayer > 15f && !ShootEveryWay)
             {
                 isShooting = false;
                 timeBetweenShots = 1.5f;
@@ -117,10 +115,5 @@ public class Ctrelok : MonoBehaviour
         if (!isDead) Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
         timeBetweenShots = 1.5f;
         isShooting = false;
-    }
-
-    private void OnDestroy()
-    {
-        if (ShouldDropKey) Instantiate(Key, transform.position, transform.rotation);
     }
 }

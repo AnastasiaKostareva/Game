@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Entity : MonoBehaviour
 {
     public int hp;
-    public int damage;
     public float resist;
     public int maxHp;
     public bool isDead;
