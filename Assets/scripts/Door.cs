@@ -14,11 +14,10 @@ public class Door : MonoBehaviour
         playerAsObj = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         var player = playerAsObj.GetComponent<Player>();
-        if (HelpTool.FindDistance(gameObject, playerAsObj) <= 1f && player.keyCount > 0)
+        if (HelpTool.FindDistance(gameObject, playerAsObj) <= 2f && player.keyCount > 0)
         {
             if (Input.GetKeyUp(KeyCode.E))
             {
