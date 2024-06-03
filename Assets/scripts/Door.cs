@@ -20,7 +20,6 @@ public class Door : MonoBehaviour
         var player = playerAsObj.GetComponent<Player>();
         if (HelpTool.FindDistance(gameObject, playerAsObj) <= 1f && player.keyCount > 0)
         {
-            player.interactionKey.GetComponent<SpriteRenderer>().enabled = true;
             if (Input.GetKeyUp(KeyCode.E))
             {
                 if (SceneIndex != 0) SceneManager.LoadScene(SceneIndex, LoadSceneMode.Single);
@@ -32,6 +31,5 @@ public class Door : MonoBehaviour
                 }
             }
         }
-        else player.interactionKey.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

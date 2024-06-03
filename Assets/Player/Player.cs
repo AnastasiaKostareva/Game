@@ -30,13 +30,6 @@ public class Player : MonoBehaviour
     private bool isRun = false;
     
     public int keyCount;
-    public GameObject interactionKey;
-
-    private void Start()
-    {
-        interactionKey = GameObject.FindGameObjectWithTag("interaction");
-        interactionKey.GetComponent<SpriteRenderer>().enabled = false;
-    }
 
     void Awake()
     {

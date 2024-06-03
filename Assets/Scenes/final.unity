@@ -64590,7 +64590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5643649150297268121, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
       propertyPath: keyCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5643649150297268121, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
       propertyPath: DashPower
