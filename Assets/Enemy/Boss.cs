@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = System.Random;
-
 public class Boss : MonoBehaviour
 {
     public bool isTriggered;
@@ -284,12 +284,12 @@ public class Boss : MonoBehaviour
 
     private IEnumerator SuddenDance()
     {
-        Debug.Log("123132312");
         isDead = true;
         playa.Stop();
         playa.clip = deathSound;
         playa.Play();
         yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(10, LoadSceneMode.Single);
         Destroy(gameObject);
     }
     

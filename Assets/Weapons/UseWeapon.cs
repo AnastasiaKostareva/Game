@@ -53,7 +53,7 @@ public class UseWeapon : MonoBehaviour
         audioObject.transform.position = new Vector3(-1000, -1000);
         audioSource = audioObject.AddComponent<AudioSource>();
         audioSource.clip = shootAudio;
-        audioSource.volume = 0.12f;
+        audioSource.volume = 0.3f;
         audioSource.Play();
         return audioObject;
     }

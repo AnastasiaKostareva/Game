@@ -579,6 +579,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6842340462327796733, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
+      propertyPath: hp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842340462327796733, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
+      propertyPath: maxHp
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7030738922643196673, guid: af057711e4e811a4593d482e228b7e8b, type: 3}
       propertyPath: m_Name
       value: player Variant
@@ -53529,9 +53537,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d5d7b1d72bbd918458f0f8d561337767, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1ac8916a8f7c4824682cc7051a17c38d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.139
+  m_Volume: 0.494
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -56052,6 +56060,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 66340762}
     - target: {fileID: 9132796581392872068, guid: cc0e28cd2c92d3b4db2400d7d63a5db2, type: 3}
+      propertyPath: rageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e1318fe8e40427042a4d4f58e9c22d5b, type: 3}
+    - target: {fileID: 9132796581392872068, guid: cc0e28cd2c92d3b4db2400d7d63a5db2, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b4f8b6c5da305b744b2501646ec66f5d, type: 3}
+    - target: {fileID: 9132796581392872068, guid: cc0e28cd2c92d3b4db2400d7d63a5db2, type: 3}
       propertyPath: isShooting
       value: 0
       objectReference: {fileID: 0}
@@ -56067,6 +56083,10 @@ PrefabInstance:
       propertyPath: teleportSound
       value: 
       objectReference: {fileID: 8300000, guid: 168b3c4b67bdfe64995dc957d94a5bd6, type: 3}
+    - target: {fileID: 9132796581392872068, guid: cc0e28cd2c92d3b4db2400d7d63a5db2, type: 3}
+      propertyPath: flameRageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 751cd3888b4a4634cb1f13a27999f46d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
